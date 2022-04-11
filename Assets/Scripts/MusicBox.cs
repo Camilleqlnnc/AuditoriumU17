@@ -16,7 +16,7 @@ public class MusicBox : MonoBehaviour
     #region Unity Life Cycle
     void Awake()
     {
-        
+        _audioSource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,8 @@ public class MusicBox : MonoBehaviour
         {
            _volume = Mathf.Clamp01(_volume - _volumeDecayPerSecond * Time.deltaTime);
         }
+
+        _audioSource.volume = _volume;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -53,6 +55,7 @@ public class MusicBox : MonoBehaviour
     #region Private & Protected
     private float _volume;
     private float _startDecayTime;
+    private AudioSource _audioSource;
     #endregion
 }
 

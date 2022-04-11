@@ -123,26 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &422910883 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2420443580245067050, guid: 647f8ae2d55f51d45bc36b874d7349d6, type: 3}
-  m_PrefabInstance: {fileID: 2085332655}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &422910886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422910883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd935923976b3444a9a295450517c960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _volumeRaisePerParticle: 0.05
-  _volumeDecayPerSecond: 0.2
-  _volumeDecayDelay: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993182199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.13, y: -1.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -349,8 +329,12 @@ PrefabInstance:
       value: MusicalBox
       objectReference: {fileID: 0}
     - target: {fileID: 4058379656894676375, guid: 647f8ae2d55f51d45bc36b874d7349d6, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: m_Size.y
+      value: 5.0762
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058379656894676375, guid: 647f8ae2d55f51d45bc36b874d7349d6, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.2526386
       objectReference: {fileID: 0}
     - target: {fileID: 7041455785667798042, guid: 647f8ae2d55f51d45bc36b874d7349d6, type: 3}
       propertyPath: m_RootOrder
