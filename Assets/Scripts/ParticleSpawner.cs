@@ -6,7 +6,8 @@ public class ParticleSpawner : MonoBehaviour
 {
     //Toutes les variables accessibles dans l'inspector
     #region Exposed
-    [SerializeField] private GameObject _particlePrefab;
+    [Tooltip("Le pool de particules dans lequel aller chercher les particules.")]
+    [SerializeField] private ParticlePool _pool;
 
     [Header("Spawner Parameters")]
     [SerializeField] private float _spawnerRadius;
@@ -47,16 +48,29 @@ public class ParticleSpawner : MonoBehaviour
     #region Main Methods
     private GameObject SpawnParticle()
     {
+        //calcul a rand position in a cercle with _spawnerRadius radius, centered on the spawer
         Vector2 position = Random.insideUnitCircle * _spawnerRadius + (Vector2)_transform.position;
-        GameObject particle = Instantiate(_particlePrefab, position, Quaternion.identity, _particleContainer);
+        //get a particle in the pool
+        GameObject particle = _pool.GetParticle();
+
+        if(particle != null)
+        {
+            particle.SetActive(true);
+            particle.transform.position = position;
+            particle.GetComponent<TrailRenderer>().Clear();           
+        }
         return particle;
     }
 
     private void LaunchParticle(GameObject particle)
     {
-        Rigidbody2D rb2d = particle.GetComponent<Rigidbody2D>();
-        rb2d.drag = _particleDrag;
-        rb2d.velocity = _transform.right * _particleSpeed;
+        if(particle != null)
+        {
+            Rigidbody2D rb2d = particle.GetComponent<Rigidbody2D>();
+            rb2d.drag = _particleDrag;
+            rb2d.velocity = _transform.right * _particleSpeed;
+        }
+
     }
 
     #endregion

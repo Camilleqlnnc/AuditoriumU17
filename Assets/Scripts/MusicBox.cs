@@ -11,6 +11,9 @@ public class MusicBox : MonoBehaviour
     [SerializeField] private float _volumeRaisePerParticle;
     [SerializeField] private float _volumeDecayPerSecond;
     [SerializeField] private float _volumeDecayDelay;
+    [SerializeField] private SpriteRenderer[] _volumeBars;
+    [SerializeField] private Color _enabledColor;
+    [SerializeField] private Color _disabledColor;
     #endregion
 
     #region Unity Life Cycle
@@ -33,10 +36,11 @@ public class MusicBox : MonoBehaviour
         }
 
         _audioSource.volume = _volume;
+        
+        UpdateRenderers();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Colision with particle");
         _volume = Mathf.Clamp01(_volume + _volumeRaisePerParticle);
         // la mm chose _volume = Mathf.Clamp(_volume + _volumeRaisePerParticle, 0, 1);
         //on aurait pu mettre ça aussi _volume = Mathf.Min(_volume + _volumeRaisePerParticle, 1);
@@ -48,7 +52,25 @@ public class MusicBox : MonoBehaviour
     #endregion
     //Toutes les fonctions créées par l'équipe
     #region Main Methods
+    private void UpdateRenderers()
+    {
+        int barsToEnable = Mathf.FloorToInt(_volumeBars.Length * _volume);
 
+        for (int i = 0; i < _volumeBars.Length; i++)
+        {
+            if(i<barsToEnable)
+            {
+                _volumeBars[i].color = _enabledColor;
+            }
+            else
+            {
+                _volumeBars[i].color = _disabledColor;
+            }
+            // Code
+
+        }
+
+    }
     #endregion
 
     //Les variables privées et protégées

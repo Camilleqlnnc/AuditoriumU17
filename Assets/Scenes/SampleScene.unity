@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &298126547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 298126549}
+  - component: {fileID: 298126548}
+  m_Layer: 0
+  m_Name: ParticlePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &298126548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298126547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f004bd07b8b691e47af486d8402ef32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlePrefab: {fileID: 4575983482030159444, guid: 06b2dd5e429d89840800674a8a21a39e, type: 3}
+  _amountOfParticle: 40
+--- !u!4 &298126549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298126547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,11 +354,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7ad7268ee670946839929cf79a64ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particlePrefab: {fileID: 4575983482030159444, guid: 06b2dd5e429d89840800674a8a21a39e, type: 3}
+  _pool: {fileID: 298126548}
   _spawnerRadius: 1
-  _spawnDelay: 0.03
+  _spawnDelay: 0.1
   _particleContainer: {fileID: 808309328}
-  _particleSpeed: 2
+  _particleSpeed: 5
   _particleDrag: 0.5
   _drawGizmos: 1
   _gizmosColor: {r: 0, g: 0.8334345, b: 0.9528302, a: 0.7019608}
@@ -327,14 +372,6 @@ PrefabInstance:
     - target: {fileID: 2420443580245067050, guid: 647f8ae2d55f51d45bc36b874d7349d6, type: 3}
       propertyPath: m_Name
       value: MusicalBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 4058379656894676375, guid: 647f8ae2d55f51d45bc36b874d7349d6, type: 3}
-      propertyPath: m_Size.y
-      value: 5.0762
-      objectReference: {fileID: 0}
-    - target: {fileID: 4058379656894676375, guid: 647f8ae2d55f51d45bc36b874d7349d6, type: 3}
-      propertyPath: m_Offset.y
-      value: 2.2526386
       objectReference: {fileID: 0}
     - target: {fileID: 7041455785667798042, guid: 647f8ae2d55f51d45bc36b874d7349d6, type: 3}
       propertyPath: m_RootOrder

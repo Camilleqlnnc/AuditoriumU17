@@ -7,7 +7,6 @@ public class ParticleDestruction : MonoBehaviour
     //Toutes les variables accessibles dans l'inspector
     #region Exposed
     [SerializeField] private float _minSpeed;
-    
     #endregion
 
     #region Unity Life Cycle
@@ -15,20 +14,13 @@ public class ParticleDestruction : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
         if(_rigidbody.velocity.magnitude < _minSpeed)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
-        
     }
     #endregion
     //Toutes les fonctions créées par l'équipe

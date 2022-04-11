@@ -48,7 +48,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.7172215, y: 1.8263674}
+  m_Offset: {x: 1.7172215, y: 2.2526386}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -59,7 +59,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.1246986, y: 5.0893164}
+  m_Size: {x: 3.1246986, y: 5.0762}
   m_EdgeRadius: 0
 --- !u!82 &6484173544997372620
 AudioSource:
@@ -171,7 +171,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _volumeRaisePerParticle: 0.05
   _volumeDecayPerSecond: 0.2
-  _volumeDecayDelay: 5
+  _volumeDecayDelay: 1
+  _volumeBars:
+  - {fileID: 5911179749296322747}
+  - {fileID: 240636817277525194}
+  - {fileID: 8741792178650808630}
+  - {fileID: 984442530009768711}
+  - {fileID: 9162460709486474632}
+  - {fileID: 2906671975212128661}
+  - {fileID: 6164609896983251587}
+  - {fileID: 5342956777308025020}
+  - {fileID: 3076517689719469571}
+  - {fileID: 3683177742826713176}
+  _enabledColor: {r: 0.3066038, g: 1, b: 0.54535717, a: 1}
+  _disabledColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
 --- !u!1 &2445476422880046022
 GameObject:
   m_ObjectHideFlags: 0
