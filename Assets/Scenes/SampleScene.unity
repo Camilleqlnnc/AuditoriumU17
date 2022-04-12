@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particlePrefab: {fileID: 4575983482030159444, guid: 06b2dd5e429d89840800674a8a21a39e, type: 3}
-  _amountOfParticle: 40
+  _amountOfParticle: 100
 --- !u!4 &298126549
 Transform:
   m_ObjectHideFlags: 0
