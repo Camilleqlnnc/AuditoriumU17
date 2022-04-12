@@ -37,17 +37,21 @@ public class EffectorInteractions : MonoBehaviour
                 offset = _activeEffector.transform.position - mousePosition;
             }
         }
-        if (_activeEffector)
-        {
-            _activeEffector.transform.position = mousePosition + offset;
-        }
+
         if(Input.GetMouseButtonUp(0) && _activeEffector)
         {
             _activeEffector = null;
         }
     }
+    private void FixedUpdate()
+    {
+        if (_activeEffector)
+        {
+            _activeEffector.transform.position = mousePosition + offset;
+        }
+    }
     #endregion
-   //Toutes les fonctions créées par l'équipe
+    //Toutes les fonctions créées par l'équipe
     #region Main Methods
     void DetectObject()
     {
