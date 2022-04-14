@@ -27,17 +27,13 @@ public class MouseManager : MonoBehaviour
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, _layerMask);
         hit = ChangeCursor(hit);
         ActiveEffector(hit);
-
         if (_activeEffector != null)
         {
             MoveEffector();
             ResizeEffector();
         }
-
         ResetCursor();
     }
-
-   
     void FixedUpdate()
     {
 
@@ -65,7 +61,7 @@ public class MouseManager : MonoBehaviour
         }
         return hit;
     }
-    //define the active effector
+    //define the active effector Move or Resize
     private void ActiveEffector(RaycastHit2D hit)
     {
         if (Input.GetMouseButtonDown(0))
@@ -84,20 +80,23 @@ public class MouseManager : MonoBehaviour
             }
         }
     }
-    private void ResizeEffector()
-    {
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (_mode == "Resize")
-        {
-            _activeEffector.GetComponent<CircleShape>().Radius = Vector2.Distance(_activeEffector.position, worldMousePosition);
-        }
-    }
+    //si mon effector actif est tagué move alors je le déplace
     private void MoveEffector()
     {
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (_mode == "Move")
         {
             _activeEffector.transform.position = new Vector3(worldMousePosition.x, worldMousePosition.y, _activeEffector.transform.position.z);
+        }
+    }
+
+    //si mon effector actif est tagué resize alors j'augmente le rayon de mon effector
+    private void ResizeEffector()
+    {
+        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (_mode == "Resize")
+        {
+            _activeEffector.GetComponent<CircleShape>().Radius = Vector2.Distance(_activeEffector.position, worldMousePosition);
         }
     }
     private void ResetCursor()

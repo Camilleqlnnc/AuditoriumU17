@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
-
+/*
 public class AudioManager : MonoBehaviour
 {
     //Toutes les variables accessibles dans l'inspector
     #region Exposed
     public Sound[] sounds;
+    [SerializeField] private float _timeToWin;
     #endregion
 
     #region Unity Life Cycle
@@ -33,7 +34,10 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(gameObject.AddComponent<AudioSource>().volume == 1.0)
+        {
+
+        }
     }
     #endregion
     //Toutes les fonctions créées par l'équipe
@@ -56,3 +60,4 @@ public class AudioManager : MonoBehaviour
 
     #endregion
 }
+*/
