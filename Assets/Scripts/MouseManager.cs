@@ -25,7 +25,29 @@ public class MouseManager : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, _layerMask);
-        //changing the cursor according to the hover
+        hit = ChangeCursor(hit);
+        ActiveEffector(hit);
+
+        if (_activeEffector != null)
+        {
+            MoveEffector();
+            ResizeEffector();
+        }
+
+        ResetCursor();
+    }
+
+   
+    void FixedUpdate()
+    {
+
+    }
+    #endregion
+
+    #region Main Methods
+    //changing the cursor according to the hover
+    private RaycastHit2D ChangeCursor(RaycastHit2D hit)
+    {
         if (hit.collider != null)
         {
             if (hit.collider.CompareTag("Move"))
@@ -41,7 +63,11 @@ public class MouseManager : MonoBehaviour
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
         }
-        //moving the active effector on click
+        return hit;
+    }
+    //define the active effector
+    private void ActiveEffector(RaycastHit2D hit)
+    {
         if (Input.GetMouseButtonDown(0))
         {
             if (hit.collider != null)
@@ -57,43 +83,36 @@ public class MouseManager : MonoBehaviour
                 _mode = hit.collider.tag;
             }
         }
-
-        if (_activeEffector != null)
+    }
+    private void ResizeEffector()
+    {
+        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (_mode == "Resize")
         {
-            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (_mode == "Move")
-            {
-                _activeEffector.transform.position = new Vector3(worldMousePosition.x, worldMousePosition.y, _activeEffector.transform.position.z);
-            }
-            else if (_mode == "Resize")
-            {
-                _activeEffector.GetComponent<CircleShape>().Radius = Vector2.Distance(_activeEffector.position, worldMousePosition);
-            }
+            _activeEffector.GetComponent<CircleShape>().Radius = Vector2.Distance(_activeEffector.position, worldMousePosition);
         }
-
+    }
+    private void MoveEffector()
+    {
+        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (_mode == "Move")
+        {
+            _activeEffector.transform.position = new Vector3(worldMousePosition.x, worldMousePosition.y, _activeEffector.transform.position.z);
+        }
+    }
+    private void ResetCursor()
+    {
         if (Input.GetMouseButtonUp(0))
         {
             _activeEffector = null;
             _mode = "Null";
         }
     }
-
-    void FixedUpdate()
-    {
-
-    }
-
-    #endregion
-
-    #region Main Methods
     #endregion
 
     #region Privates & Protected
-
     private Transform _activeEffector;
     private string _mode = "Null"; //Move, Resize, Null
     //private Mode _mode = Mode.NULL;
-
     #endregion
-
 }
